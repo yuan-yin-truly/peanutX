@@ -53,7 +53,7 @@ peanutXdecontaminate <- function(counts,
 
 
   ## Process Stan output
-  re <- process_stan_vb(out)
+  re <- process_stan_vb(out, dat)
 
 
   return(re)
