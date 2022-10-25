@@ -21,12 +21,13 @@ call_stan_vb <- function(data, initial_condition){
 
 #' Process Stan output.
 #'
-#' @param stan_vb_output
+#' @param stan_vb_output Stan variational bayes output
+#' @param dat List of data input to stan vb
 #'
 #' @return Decomposed counts based on Stan estimate.
 #'
 #' @examples
-process_stan_vb <- function(stan_vb_output){
+process_stan_vb_out <- function(stan_vb_output, dat){
 
   val <- out@sim$est
 

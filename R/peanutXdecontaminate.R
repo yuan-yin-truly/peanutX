@@ -2,8 +2,8 @@
 #'
 #' @param counts NxM sparse matrix, N ADTs and M droplets.
 #' @param cell_type vector length M. 1 based.
+#' @param background_sd
 #' @param delta_sd
-#' @param ground_sd
 #'
 #' @return A list of decontamination estimation.
 #' @export
@@ -13,7 +13,7 @@
 peanutXdecontaminate <- function(counts,
                                  cell_type,
                                  delta_sd,
-                                 ground_sd){
+                                 background_sd){
 
   ## Prep data
   N <- nrow(counts)
@@ -53,7 +53,7 @@ peanutXdecontaminate <- function(counts,
 
 
   ## Process Stan output
-  re <- process_stan_vb(out, dat)
+  re <- process_stan_vb_out(out, dat)
 
 
   return(re)
