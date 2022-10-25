@@ -4,7 +4,6 @@
 #' @param initial_condition
 #'
 #' @return
-#' @export
 #'
 #' @examples
 call_stan <- function(data, initial_condition){
