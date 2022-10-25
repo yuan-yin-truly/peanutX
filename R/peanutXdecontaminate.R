@@ -19,10 +19,10 @@ peanutXdecontaminate <- function(counts,
   N <- nrow(counts)
   M <- ncol(counts)
 
-  p <- matrixStats::rowSums2(counts)
+  p <- rowSums(counts)
   p <- p/sum(p)
 
-  OC <- matrixStats::colSums2(counts)
+  OC <- colSums(counts)
 
   counts <- as.matrix(counts)
 
@@ -33,16 +33,17 @@ peanutXdecontaminate <- function(counts,
              counts = counts,
              OC = OC,
              p = p,
+             run_estimation = 1,
              delta_sd = delta_sd,
              background_sd = background_sd)
 
 
   init <- list(delta = matrix(rep(1e-4, N*M,
                             nrow = M,
-                            ncol = N),
-             background = matrix(rep(1e-2, N*M),
+                            ncol = N)),
+               background = matrix(rep(1e-2, N*M),
                                  nrow = N,
-                                 ncol = M)))
+                                 ncol = M))
 
 
 
