@@ -1,11 +1,11 @@
-#' Title
+#' peanutX decontamination
 #'
-#' @param counts
-#' @param cell_type
+#' @param counts NxM sparse matrix, N ADTs and M droplets.
+#' @param cell_type vector length M. 1 based.
 #' @param delta_sd
 #' @param ground_sd
 #'
-#' @return
+#' @return A list of decontamination estimation.
 #' @export
 #'
 #' @examples
@@ -48,7 +48,7 @@ peanutXdecontaminate <- function(counts,
 
 
   ## Call inference
-  out <- call_stan(dat, init)
+  out <- call_stan_vb(dat, init)
 
 
 

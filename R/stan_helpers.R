@@ -1,12 +1,12 @@
-#' Title
+#' Call Stan variational bayes for inference
 #'
-#' @param data
-#' @param initial_condition
+#' @param data A list of input data for Stan.
+#' @param initial_condition Initial values for Stan params.
 #'
-#' @return
+#' @return Stan output
 #'
 #' @examples
-call_stan <- function(data, initial_condition){
+call_stan_vb <- function(data, initial_condition){
 
   out <- rstan::vb(object = stanmodels$shrinkage,
                    init = initial_condition,
@@ -19,11 +19,11 @@ call_stan <- function(data, initial_condition){
 
 
 
-#' Title
+#' Process Stan output.
 #'
 #' @param stan_vb_output
 #'
-#' @return
+#' @return Decomposed counts based on Stan estimate.
 #'
 #' @examples
 process_stan_vb <- function(stan_vb_output){
