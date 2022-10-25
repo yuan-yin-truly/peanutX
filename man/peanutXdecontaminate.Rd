@@ -4,14 +4,14 @@
 \alias{peanutXdecontaminate}
 \title{peanutX decontamination}
 \usage{
-peanutXdecontaminate(counts, cell_type, delta_sd, ground_sd)
+peanutXdecontaminate(counts, cell_type, delta_sd, background_sd)
 }
 \arguments{
 \item{counts}{NxM sparse matrix, N ADTs and M droplets.}
 
 \item{cell_type}{vector length M. 1 based.}
 
-\item{ground_sd}{}
+\item{delta_sd}{}
 }
 \value{
 A list of decontamination estimation.
