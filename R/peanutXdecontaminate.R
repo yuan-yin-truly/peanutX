@@ -87,12 +87,12 @@ setMethod("peanutXdecontaminate", "ANY", function(object,
 
 
   ## Call inference
-  out <- call_stan_vb(dat, init)
+  out <- .call_stan_vb(dat, init)
 
 
 
   ## Process Stan output
-  re <- process_stan_vb_out(out, dat)
+  re <- .process_stan_vb_out(out, dat)
 
 
   return(re)
