@@ -1,16 +1,54 @@
-#' peanutX decontamination
+#' Decontaminate using peanutX
 #'
-#' @param counts NxM sparse matrix, N ADTs and M droplets.
-#' @param cell_type vector length M. 1 based.
-#' @param background_sd
-#' @param delta_sd
+#' @param object Data matrix NxM of single cell experiment class
+#' @param cell_type 1xM vector of cell_type. 1-based.
+#' @param delta_sd Prior for delta. Set to 2e-5 for now.
+#' @param background_sd Prior for background. Set to 2e-6 for now.
+#' @param ...
 #'
-#' @return A list of decontamination estimation.
+#' @return
 #' @export
 #'
 #' @examples
-#'
-peanutXdecontaminate <- function(counts,
+setGeneric("peanutXdecontaminate", function(object,
+                                            cell_type,
+                                            delta_sd,
+                                            background_sd,
+                                            ...) standardGeneric("peanutXdecontaminate"))
+
+
+
+setMethod("peanutXdecontaminate", "SingleCellExperiment", function(object,
+                                                                   cell_type,
+                                                                   delta_sd,
+                                                                   background_sd,
+                                                                   ...){
+  counts <- SummarizedExperiment::assay(object, 'counts')
+  output <- .peanutXdecontaminate(counts,
+                                cell_type,
+                                delta_sd,
+                                background_sd)
+
+})
+
+
+setMethod("peanutXdecontaminate", "ANY", function(object,
+                                                  cell_type,
+                                                  delta_sd,
+                                                  background_sd,
+                                                  ...){
+  output <- .peanutXdecontaminate(object,
+                                  cell_type,
+                                  delta_sd,
+                                  background_sd)
+
+})
+
+
+
+
+
+.peanutXdecontaminate <- function(counts,
                                  cell_type,
                                  delta_sd,
                                  background_sd){
