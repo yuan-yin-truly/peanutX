@@ -43,14 +43,16 @@ process_stan_vb_out <- function(stan_vb_output, dat){
 
 
   # Save raw estimations
-  raw_estimate <- list()
-  raw_estimate[['r_est']] <- r_est
-  raw_estimate[['delta_est']] <- delta_est
-  raw_estimate[['delta_mean_est']] <- delta_mean_est
-  raw_estimate[['background_est']] <- background_est
-  raw_estimate[['background_mean_est']] <- background_mean_est
+  parameters <- list()
+  parameters[['delta_sd']] <- dat$delta_sd
+  parameters[['background_sd']] <- dat$background_sd
+  parameters[['r_est']] <- r_est
+  parameters[['delta_est']] <- delta_est
+  parameters[['delta_mean_est']] <- delta_mean_est
+  parameters[['background_est']] <- background_est
+  parameters[['background_mean_est']] <- background_mean_est
 
-  processed_stan[['raw_estimate']] <- raw_estimate
+  processed_stan[['parameters']] <- parameters
 
 
 
