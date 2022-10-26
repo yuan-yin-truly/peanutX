@@ -2,9 +2,15 @@
 % Please edit documentation in R/peanutXdecontaminate.R
 \name{peanutXdecontaminate}
 \alias{peanutXdecontaminate}
+\alias{peanutXdecontaminate,SingleCellExperiment-method}
+\alias{peanutXdecontaminate,ANY-method}
 \title{Decontaminate using peanutX}
 \usage{
 peanutXdecontaminate(object, cell_type, delta_sd, background_sd, ...)
+
+\S4method{peanutXdecontaminate}{SingleCellExperiment}(object, cell_type, delta_sd, background_sd, ...)
+
+\S4method{peanutXdecontaminate}{ANY}(object, cell_type, delta_sd, background_sd, ...)
 }
 \arguments{
 \item{object}{Data matrix NxM of single cell experiment class}
@@ -15,7 +21,10 @@ peanutXdecontaminate(object, cell_type, delta_sd, background_sd, ...)
 
 \item{background_sd}{Prior for background. Set to 2e-6 for now.}
 
-\item{...}{}
+\item{...}{Additional arguments for generics.}
+}
+\value{
+A list of decontaminated counts, and estimated parameters.
 }
 \description{
 Decontaminate using peanutX

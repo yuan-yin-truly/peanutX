@@ -20,7 +20,8 @@ Imports:
     rstan (>= 2.18.1),
     rstantools (>= 2.2.0),
     Seurat,
-    SingleCellExperiment
+    SingleCellExperiment,
+    SummarizedExperiment
 LinkingTo: 
     BH (>= 1.66.0),
     Rcpp (>= 0.12.0),
