@@ -29,7 +29,7 @@ call_stan_vb <- function(data, initial_condition){
 #' @examples
 process_stan_vb_out <- function(stan_vb_output, dat){
 
-  val <- out@sim$est
+  val <- stan_vb_output@sim$est
 
   r_est <- val$r
   delta_est <- t(val$delta)
