@@ -38,9 +38,9 @@ peanutXdecontaminate <- function(counts,
              background_sd = background_sd)
 
 
-  init <- list(delta = matrix(rep(1e-4, N*M,
+  init <- list(delta = matrix(rep(1e-4, N*M),
                             nrow = M,
-                            ncol = N)),
+                            ncol = N),
                background = matrix(rep(1e-2, N*M),
                                  nrow = N,
                                  ncol = M))
