@@ -6,7 +6,7 @@
 #' @param background_sd Prior for background. Set to 2e-6 for now.
 #' @param ...
 #'
-#' @return
+#' @return A list of decontaminated counts, and estimated parameters.
 #' @export
 #'
 #' @examples
