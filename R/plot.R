@@ -13,7 +13,6 @@ plotDensity <- function(counts,
                         decontaminated_counts,
                         features,
                         file_name) {
-
   pdf(paste0(file_name, ".pdf"))
 
 
@@ -21,8 +20,8 @@ plotDensity <- function(counts,
     feature <- features[i]
 
 
-    df <- data.frame(con = counts[feature, ],
-                     decon = decontaminated_counts[feature, ])
+    df <- data.frame(con = counts[feature,],
+                     decon = decontaminated_counts[feature,])
     df.m <- reshape2::melt(df)
 
 

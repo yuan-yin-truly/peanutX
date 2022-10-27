@@ -21,7 +21,8 @@ setGeneric("peanutXdecontaminate", function(object,
                                             cell_type,
                                             delta_sd,
                                             background_sd,
-                                            ...) standardGeneric("peanutXdecontaminate"))
+                                            ...)
+  standardGeneric("peanutXdecontaminate"))
 
 
 #' @export
@@ -30,12 +31,12 @@ setMethod("peanutXdecontaminate", "SingleCellExperiment", function(object,
                                                                    cell_type,
                                                                    delta_sd,
                                                                    background_sd,
-                                                                   ...){
+                                                                   ...) {
   counts <- SummarizedExperiment::assay(object, 'counts')
   output <- .peanutXdecontaminate(counts,
-                                cell_type,
-                                delta_sd,
-                                background_sd)
+                                  cell_type,
+                                  delta_sd,
+                                  background_sd)
 
 })
 
@@ -46,7 +47,7 @@ setMethod("peanutXdecontaminate", "ANY", function(object,
                                                   cell_type,
                                                   delta_sd,
                                                   background_sd,
-                                                  ...){
+                                                  ...) {
   output <- .peanutXdecontaminate(object,
                                   cell_type,
                                   delta_sd,
@@ -59,39 +60,43 @@ setMethod("peanutXdecontaminate", "ANY", function(object,
 
 
 .peanutXdecontaminate <- function(counts,
-                                 cell_type,
-                                 delta_sd,
-                                 background_sd){
-
+                                  cell_type,
+                                  delta_sd,
+                                  background_sd) {
   ## Prep data
   N <- nrow(counts)
   M <- ncol(counts)
 
   p <- rowSums(counts)
-  p <- p/sum(p)
+  p <- p / sum(p)
 
   OC <- colSums(counts)
 
   counts <- as.matrix(counts)
 
-  dat <- list(N = N,
-             M = M,
-             K = length(unique(cell_type)),
-             cell_type = cell_type,
-             counts = counts,
-             OC = OC,
-             p = p,
-             run_estimation = 1,
-             delta_sd = delta_sd,
-             background_sd = background_sd)
+  dat <- list(
+    N = N,
+    M = M,
+    K = length(unique(cell_type)),
+    cell_type = cell_type,
+    counts = counts,
+    OC = OC,
+    p = p,
+    run_estimation = 1,
+
+    delta_sd = delta_sd,
+    background_sd = background_sd
+  )
 
 
-  init <- list(delta = matrix(rep(1e-4, N*M),
-                            nrow = M,
-                            ncol = N),
-               background = matrix(rep(1e-2, N*M),
-                                 nrow = N,
-                                 ncol = M))
+  init <- list(
+    delta = matrix(rep(1e-4, N * M),
+                   nrow = M,
+                   ncol = N),
+    background = matrix(rep(1e-2, N * M),
+                        nrow = N,
+                        ncol = M)
+  )
 
 
 
