@@ -17,6 +17,7 @@ Imports:
     rstan (>= 2.18.1),
     rstantools (>= 2.2.0),
     scales,
+    Seurat,
     SingleCellExperiment,
     SummarizedExperiment
 LinkingTo: 

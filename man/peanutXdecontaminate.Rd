@@ -3,12 +3,15 @@
 \name{peanutXdecontaminate}
 \alias{peanutXdecontaminate}
 \alias{peanutXdecontaminate,SingleCellExperiment-method}
+\alias{peanutXdecontaminate,Seurat-method}
 \alias{peanutXdecontaminate,ANY-method}
 \title{Decontaminate using peanutX}
 \usage{
 peanutXdecontaminate(object, cell_type, delta_sd, background_sd, ...)
 
 \S4method{peanutXdecontaminate}{SingleCellExperiment}(object, cell_type, delta_sd, background_sd, ...)
+
+\S4method{peanutXdecontaminate}{Seurat}(object, cell_type, delta_sd, background_sd, ...)
 
 \S4method{peanutXdecontaminate}{ANY}(object, cell_type, delta_sd, background_sd, ...)
 }
@@ -24,7 +27,7 @@ peanutXdecontaminate(object, cell_type, delta_sd, background_sd, ...)
 \item{...}{Additional arguments for generics.}
 }
 \value{
-A list of decontaminated counts, and estimated parameters.
+A list containing decontaminated counts, and estimated parameters.
 }
 \description{
 Decontaminate using peanutX

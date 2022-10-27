@@ -8,7 +8,7 @@
 #' @param background_sd Prior for background. Set to 2e-6 for now.
 #' @param ... Additional arguments for generics.
 #'
-#' @return A list of decontaminated counts, and estimated parameters.
+#' @return A list containing decontaminated counts, and estimated parameters.
 #'
 #' @examples
 #'
@@ -38,6 +38,24 @@ setMethod("peanutXdecontaminate", "SingleCellExperiment", function(object,
                                   background_sd)
 
 })
+
+
+
+#' @export
+#' @rdname peanutXdecontaminate
+setMethod("peanutXdecontaminate", "Seurat", function(object,
+                                                     cell_type,
+                                                     delta_sd,
+                                                     background_sd,
+                                                     ...) {
+  counts <- Seurat::GetAssayData(object, slot = 'counts')
+  output <- .peanutXdecontaminate(counts,
+                                  cell_type,
+                                  delta_sd,
+                                  background_sd)
+
+})
+
 
 
 #' @export
