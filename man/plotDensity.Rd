@@ -4,7 +4,7 @@
 \alias{plotDensity}
 \title{Density of each ADT, raw counts overlapped with decontaminated counts}
 \usage{
-plotDensity(counts, decontaminated_counts, features, file_name)
+plotDensity(counts, decontaminated_counts, features)
 }
 \arguments{
 \item{counts}{raw count matrix}
@@ -12,8 +12,6 @@ plotDensity(counts, decontaminated_counts, features, file_name)
 \item{decontaminated_counts}{decontaminated count matrix}
 
 \item{features}{names of ADT to plot}
-
-\item{file_name}{output file name}
 }
 \value{
 pdf in working directory

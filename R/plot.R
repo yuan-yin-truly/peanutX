@@ -3,7 +3,6 @@
 #' @param counts raw count matrix
 #' @param decontaminated_counts decontaminated count matrix
 #' @param features names of ADT to plot
-#' @param file_name output file name
 #'
 #' @return pdf in working directory
 #' @export
