@@ -13,7 +13,7 @@ peanutXdecontaminate(object, cell_type, delta_sd, background_sd, ...)
 \S4method{peanutXdecontaminate}{ANY}(object, cell_type, delta_sd, background_sd, ...)
 }
 \arguments{
-\item{object}{Data matrix NxM of single cell experiment class}
+\item{object}{Data matrix NxM (feature x droplet).}
 
 \item{cell_type}{1xM vector of cell_type. 1-based.}
 

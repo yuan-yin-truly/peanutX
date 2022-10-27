@@ -6,22 +6,17 @@ Authors@R:
            comment = c(ORCID = "0000-0001-9261-6061"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
-Biarch: true
 Depends: 
     R (>= 3.4.0)
 Imports: 
     ggplot2,
-    matrixStats,
     methods,
     Rcpp (>= 0.12.0),
     RcppParallel (>= 5.0.1),
     reshape2,
     rstan (>= 2.18.1),
     rstantools (>= 2.2.0),
-    Seurat,
+    scales,
     SingleCellExperiment,
     SummarizedExperiment
 LinkingTo: 
@@ -31,4 +26,8 @@ LinkingTo:
     RcppParallel (>= 5.0.1),
     rstan (>= 2.18.1),
     StanHeaders (>= 2.18.0)
+Biarch: true
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
 SystemRequirements: GNU make

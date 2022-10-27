@@ -9,11 +9,12 @@
 #' @export
 #'
 #' @examples
+#'
 plotDensity <- function(counts,
                         decontaminated_counts,
                         features,
                         file_name) {
-  pdf(paste0(file_name, ".pdf"))
+  grDevices::pdf(paste0(file_name, ".pdf"))
 
 
   for (i in 1:length(features)) {
@@ -27,31 +28,32 @@ plotDensity <- function(counts,
 
 
     # Plot
-    p1 <- ggplot2::ggplot(df.m, aes(value, fill = variable)) +
-      geom_density(alpha = 0.7) +
-      scale_x_continuous(trans = scales::pseudo_log_trans(),
+    p1 <- ggplot2::ggplot(df.m,
+                          ggplot2::aes_string("value", fill = "variable")) +
+      ggplot2::geom_density(alpha = 0.7) +
+      ggplot2::scale_x_continuous(trans = scales::pseudo_log_trans(),
                          breaks = c(1, 5, 10 ^ (1:4))) +
-      scale_fill_manual(labels = c('Raw', 'Decontaminated')) +
-      ggtitle(feature) +
-      labs(x = "", fill = "") +
-      theme_classic() +
-      theme(
-        axis.text.x = element_text(
+      ggplot2::scale_fill_manual(labels = c('Raw', 'Decontaminated')) +
+      ggplot2::ggtitle(feature) +
+      ggplot2::labs(x = "", fill = "") +
+      ggplot2::theme_classic() +
+      ggplot2::theme(
+        axis.text.x = ggplot2::element_text(
           angle = 45,
           vjust = 1,
           hjust = 0.9
         ),
         # legend.title = element_blank(),
-        legend.margin = margin(t = -10)
+        legend.margin = ggplot2::margin(t = -10)
       )
 
-    ylimit <- layer_scales(p1)$y$get_limits()
+    ylimit <- ggplot2::layer_scales(p1)$y$get_limits()
     ylimit[2] <- min(ylimit[2], 5)
-    p1 <- p1 + coord_cartesian(ylim = ylimit)
+    p1 <- p1 + ggplot2::coord_cartesian(ylim = ylimit)
 
 
     print(p1)
 
   }
-  dev.off()
+  grDevices::dev.off()
 }

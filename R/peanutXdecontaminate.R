@@ -11,12 +11,11 @@
 #' @return A list of decontaminated counts, and estimated parameters.
 #'
 #' @examples
+#'
 NULL
 #' NULL
 
 
-#' @export
-#' @rdname peanutXdecontaminate
 setGeneric("peanutXdecontaminate", function(object,
                                             cell_type,
                                             delta_sd,
