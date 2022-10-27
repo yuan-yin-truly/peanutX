@@ -23,7 +23,7 @@ plotDensity <- function(counts,
 
     df <- data.frame(con = counts[feature,],
                      decon = decontaminated_counts[feature,])
-    df.m <- reshape2::melt(df)
+    df.m <- reshape2::melt(df, measure.var = c('con', 'decon'))
 
 
 
@@ -54,6 +54,7 @@ plotDensity <- function(counts,
 
 
     print(p1)
+    message(paste0('Density of ', feature, ' plotted!'))
 
   }
   grDevices::dev.off()
