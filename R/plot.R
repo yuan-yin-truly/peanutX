@@ -12,9 +12,8 @@
 #'
 plotDensity <- function(counts,
                         decontaminated_counts,
-                        features,
-                        file_name) {
-  grDevices::pdf(paste0(file_name, ".pdf"))
+                        features) {
+  # grDevices::pdf(paste0(file_name, ".pdf"))
 
 
   for (i in 1:length(features)) {
@@ -57,5 +56,5 @@ plotDensity <- function(counts,
     message(paste0('Density of ', feature, ' plotted!'))
 
   }
-  grDevices::dev.off()
+  # grDevices::dev.off()
 }
