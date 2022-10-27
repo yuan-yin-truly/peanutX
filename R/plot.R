@@ -33,7 +33,8 @@ plotDensity <- function(counts,
       ggplot2::geom_density(alpha = 0.7) +
       ggplot2::scale_x_continuous(trans = scales::pseudo_log_trans(),
                          breaks = c(1, 5, 10 ^ (1:4))) +
-      ggplot2::scale_fill_manual(labels = c('Raw', 'Decontaminated')) +
+      ggplot2::scale_fill_manual(values = c("#E64B35B2", "#4DBBD5B2"),
+                                 labels = c('Raw', 'Decontaminated')) +
       ggplot2::ggtitle(feature) +
       ggplot2::labs(x = "", fill = "") +
       ggplot2::theme_classic() +
