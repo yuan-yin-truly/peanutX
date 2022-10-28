@@ -3,6 +3,7 @@
 #' @param counts raw count matrix
 #' @param decontaminated_counts decontaminated count matrix
 #' @param features names of ADT to plot
+#' @param file file name to save plot into a pdf. If omit, print plot in console.
 #'
 #' @return pdf in working directory
 #' @export
@@ -11,9 +12,10 @@
 #'
 plotDensity <- function(counts,
                         decontaminated_counts,
-                        features) {
-  # grDevices::pdf(paste0(file_name, ".pdf"))
+                        features,
+                        file = NULL) {
 
+  p = list()
 
   for (i in 1:length(features)) {
     feature <- features[i]
@@ -50,10 +52,25 @@ plotDensity <- function(counts,
     ylimit[2] <- min(ylimit[2], 5)
     p1 <- p1 + ggplot2::coord_cartesian(ylim = ylimit)
 
-
-    print(p1)
-    message(paste0('Density of ', feature, ' plotted!'))
+    p[[i]] = p1
 
   }
-  # grDevices::dev.off()
+
+  if (is.null(file)) {
+
+    for (i in 1:length(features)) {
+      print(p[[i]])
+    }
+
+  } else {
+
+    grDevices::pdf(paste0(file, ".pdf"))
+
+    for (i in 1:length(features)) {
+      print(p[[i]])
+      message(paste0('Density of ', feature, ' plotted!'))
+    }
+
+    grDevices::dev.off()
+  }
 }
