@@ -6,7 +6,8 @@
 #' @return Stan output
 #'
 #' @examples
-call_stan_vb <- function(data, initial_condition){
+#'
+.call_stan_vb <- function(data, initial_condition){
 
   out <- rstan::vb(object = stanmodels$shrinkage,
                    init = initial_condition,
@@ -27,7 +28,8 @@ call_stan_vb <- function(data, initial_condition){
 #' @return Decomposed counts based on Stan estimate.
 #'
 #' @examples
-process_stan_vb_out <- function(stan_vb_output, dat){
+#'
+.process_stan_vb_out <- function(stan_vb_output, dat){
 
   val <- stan_vb_output@sim$est
 

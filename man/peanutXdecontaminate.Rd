@@ -2,20 +2,33 @@
 % Please edit documentation in R/peanutXdecontaminate.R
 \name{peanutXdecontaminate}
 \alias{peanutXdecontaminate}
-\title{peanutX decontamination}
+\alias{peanutXdecontaminate,SingleCellExperiment-method}
+\alias{peanutXdecontaminate,Seurat-method}
+\alias{peanutXdecontaminate,ANY-method}
+\title{Decontaminate using peanutX}
 \usage{
-peanutXdecontaminate(counts, cell_type, delta_sd, background_sd)
+peanutXdecontaminate(object, cell_type, delta_sd, background_sd, ...)
+
+\S4method{peanutXdecontaminate}{SingleCellExperiment}(object, cell_type, delta_sd, background_sd, ...)
+
+\S4method{peanutXdecontaminate}{Seurat}(object, cell_type, delta_sd, background_sd, ...)
+
+\S4method{peanutXdecontaminate}{ANY}(object, cell_type, delta_sd, background_sd, ...)
 }
 \arguments{
-\item{counts}{NxM sparse matrix, N ADTs and M droplets.}
+\item{object}{Data matrix NxM (feature x droplet).}
 
-\item{cell_type}{vector length M. 1 based.}
+\item{cell_type}{1xM vector of cell_type. 1-based.}
 
-\item{delta_sd}{}
+\item{delta_sd}{Prior for delta. Set to 2e-5 for now.}
+
+\item{background_sd}{Prior for background. Set to 2e-6 for now.}
+
+\item{...}{Additional arguments for generics.}
 }
 \value{
-A list of decontamination estimation.
+A list containing decontaminated counts, and estimated parameters.
 }
 \description{
-peanutX decontamination
+Decontaminate using peanutX
 }
